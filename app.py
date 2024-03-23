@@ -7,12 +7,13 @@ client = OpenAI(api_key=st.secrets["OPENAI_API_KEY"])
 
 def extract_text_from_pdf(uploaded_file):
     text = ""
-    reader = PyPDF2.PdfFileReader(uploaded_file)
-    num_pages = reader.numPages
+    reader = PyPDF2.PdfReader(uploaded_file)
+    num_pages = len(reader.pages)
     for page_number in range(num_pages):
-        page = reader.getPage(page_number)
-        text += page.extractText()
+        page = reader.pages[page_number]
+        text += page.extract_text()
     return text
+
 
 st.title("Ask My PDF")
 
