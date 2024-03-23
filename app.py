@@ -14,7 +14,7 @@ def extract_text_from_pdf(uploaded_file):
         text += page.extractText()
     return text
 
-st.title("Ask Me PDF")
+st.title("Ask My PDF")
 
 # File uploader
 uploaded_file = st.file_uploader("Upload a PDF", type="pdf")
